@@ -1,10 +1,13 @@
 # minio
 存储桶列表
 get /bucket/list
+
 文件列表
 get /bucket/objs/:bucket
+
 文件上传
 post /file/get/:bucket  file
+
 下载
 post http://localhost:8888/file/get/test 
 {
