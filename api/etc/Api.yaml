@@ -1,0 +1,13 @@
+Name: api
+Host: 0.0.0.0
+Port: 8888
+Timeout: 5000
+Log:
+  Mode: file
+File:
+  Dir: F:/dev/minio/dev
+Minio:
+  AccessKey: devdevdev
+  SecretAccessKey: devdevdev
+  Endpoint: 127.0.0.1:9005
+  UseSSL: false

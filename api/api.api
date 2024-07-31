@@ -1,0 +1,52 @@
+syntax = "v1"
+
+type ObjReq {
+	Bucket string `path:"bucket"`
+}
+
+type ListBucketResp {
+	List []BucketResp `json:"list"`
+}
+
+type BucketResp {
+	Name         string `json:"name"`
+	CreationDate string `json:"creationDate"`
+}
+
+type ListObjResp {
+	List []BucketResp `json:"list"`
+}
+
+type FileUploadRequest {
+	Bucket string `path:"bucket"`
+}
+
+type FileGetRequest {
+	Bucket string `path:"bucket"`
+	Name   string `json:"name"`
+	Path   string `json:"path"`
+}
+
+type FileUploadResponse {
+	Identity string `json:"identity"`
+	Msg      string `json:"msg"`
+	Ext      string `json:"ext"`
+	Name     string `json:"name"`
+}
+
+service api {
+	@handler ListBucket
+	get /bucket/list returns (ListBucketResp)
+
+	@handler ListObj
+	get /bucket/objs/:bucket (ObjReq) returns (ListBucketResp)
+
+	// 文件上传
+	@handler FileUpload
+	post /file/upload/:bucket (FileUploadRequest) returns (FileUploadResponse)
+
+	// 文件上传
+	@handler FileGet
+	post /file/get/:bucket (FileGetRequest)
+}
+
